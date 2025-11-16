@@ -1,0 +1,7 @@
+{
+  "name": "To-Do-List",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular-standalone"
+}
