@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Configuración</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <!-- Card de información -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Feature Flags (Remote Config)</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Estos controles simulan cambios en Firebase Remote Config. Los cambios se aplican inmediatamente sin necesidad de reinstalar la aplicación.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Feature Flags -->
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <h2>Habilitar Categorías</h2>
+          <p>Permite crear y asignar categorías a las tareas</p>
+        </ion-label>
+        <ion-toggle 
+          [(ngModel)]="config.enableCategories"
+          (ionChange)="toggleFeature('enableCategories', config.enableCategories)"
+        ></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <h2>Habilitar Filtros</h2>
+          <p>Permite filtrar tareas por categoría</p>
+        </ion-label>
+        <ion-toggle 
+          [(ngModel)]="config.enableFilters"
+          (ionChange)="toggleFeature('enableFilters', config.enableFilters)"
+        ></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <h2>Modo Oscuro</h2>
+          <p>Activa el tema oscuro de la aplicación</p>
+        </ion-label>
+        <ion-toggle 
+          [(ngModel)]="config.enableDarkMode"
+          (ionChange)="toggleFeature('enableDarkMode', config.enableDarkMode)"
+        ></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <!-- Acciones -->
+    <ion-card>
+      <ion-card-content>
+        <ion-button expand="block" (click)="syncRemoteConfig()">
+          Sincronizar con Servidor
+        </ion-button>
+        <ion-button expand="block" fill="outline" color="warning" (click)="resetToDefaults()">
+          Restaurar por Defecto
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

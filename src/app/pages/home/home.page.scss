@@ -1,0 +1,130 @@
+ion-content {
+  --background: var(--ion-background-color, #f5f5f5);
+}
+
+.container {
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+ion-card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-content {
+  padding: 12px;
+}
+
+ion-item {
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
+  --background: transparent;
+}
+
+ion-input {
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+
+ion-button {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  margin-left: 8px;
+}
+
+.empty-message {
+  color: var(--ion-color-medium);
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+}
+
+ion-label.completed {
+  h2 {
+    text-decoration: line-through;
+    color: var(--ion-color-medium);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  p {
+    color: var(--ion-color-medium);
+    opacity: 0.7;
+  }
+}
+
+ion-label {
+  h2 {
+    transition: all 0.3s ease;
+  }
+}
+
+ion-checkbox {
+  margin-right: 12px;
+  --size: 24px;
+  --checkbox-background-checked: var(--ion-color-success);
+}
+
+ion-item-sliding {
+  margin-bottom: 8px;
+  
+  ion-item {
+    --background: var(--ion-card-background, #fff);
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .category-indicator {
+    width: 4px;
+    height: 100%;
+    margin-right: .5rem;
+    border-radius: 8px 0 0 8px;
+  }
+
+  ion-label {
+    ion-chip {
+      font-size: 11px;
+      height: 24px;
+      font-weight: 600;
+      margin-top: 4px;
+
+      ion-icon {
+        font-size: 14px;
+        margin-right: 2px;
+      }
+    }
+  }
+
+  ion-item-options {
+    border-radius: 0 8px 8px 0;
+  }
+
+  ion-item-option {
+    transition: all 0.3s ease;
+
+    &[color="danger"] {
+      --background: var(--ion-color-danger);
+      
+      ion-icon {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+// Estilos para el alert de confirmación
+ion-alert {
+  .alert-button-role-destructive {
+    color: var(--ion-color-danger) !important;
+    font-weight: 600;
+  }
+}

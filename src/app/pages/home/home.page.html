@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Lista de Tareas</ion-title>
+    <ion-buttons slot="end">
+      @if (enableCategories()) {
+        <ion-button (click)="goToCategories()">
+          <ion-icon slot="icon-only" name="pricetags"></ion-icon>
+        </ion-button>
+      }
+      <ion-button (click)="goToSettings()">
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista de Tareas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <!-- Add task -->
+    <app-add-task
+      [categories]="categories()"
+      [enableCategories]="enableCategories()"
+      (loadTasks)="loadTasks()"
+    />
+
+    <!-- Category filter -->
+    @if (enableFilters() && enableCategories() && categories().length > 0) {
+      <app-filters 
+        #filters
+        [categories]="categories()"
+        [tasks]="tasks()"
+      />
+    }
+
+    <!-- To do list -->
+    <app-tasks-grid 
+      [tasks]="getFilteredTasks()"
+      [categories]="categories()"
+      [enableCategories]="enableCategories()"
+      (loadTasks)="loadTasks()"
+    />
+  </div>
+</ion-content>

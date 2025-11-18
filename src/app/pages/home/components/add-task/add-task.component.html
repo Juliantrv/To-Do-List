@@ -1,0 +1,54 @@
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="modal.present()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-modal #modal [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+    <ion-card>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-input
+            [ngModel]="newTaskName()"
+            (ngModelChange)="newTaskName.set($event)"
+            name="taskName"
+            placeholder="Ingresa el nombre de la tarea"
+            (keyup.enter)="addTask()"
+            clear-input="true"
+          ></ion-input>
+        </ion-item>
+      
+        <!-- Selector de categoría -->
+        @if (enableCategories() && categories().length > 0) {
+          <ion-item lines="none">
+            <!-- <ion-label position="stacked">Categoría (opcional)</ion-label> -->
+            <ion-select
+              [ngModel]="selectedCategoryId()"
+              (ngModelChange)="selectedCategoryId.set($event)"
+              name="category"
+              label="Categoria (Opcional)"
+              placeholder="Sin categoría"
+            >
+              <ion-select-option [value]="null">Sin categoría</ion-select-option>
+              @for (category of categories(); track category.id) {
+                <ion-select-option [value]="category.id">
+                  {{ category.name }}
+                </ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+        }
+      
+        <ion-button 
+          expand="block" 
+          (click)="addTask()" 
+          [disabled]="!newTaskName().trim()"
+        >
+          <ion-icon slot="start" name="add"></ion-icon>
+          Guardar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-modal>

@@ -9,6 +9,8 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+@use 'theme/variables' as v;
+
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
@@ -34,4 +36,18 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Estilos globales */
+html, body {
+  height: 100%;
+  background-color: v.$white;
+}
+
+ion-app {
+  height: 100%;
+}
+
+ion-content {
+  --background: var(--ion-background-color, v.$white);
+}

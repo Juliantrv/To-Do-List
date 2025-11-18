@@ -1,0 +1,20 @@
+<ion-card>
+  <ion-card-content>
+    <ion-item lines="none">
+      <ion-label position="stacked">Filtrar por categoría</ion-label>
+      <ion-select 
+        [(ngModel)]="selectedFilterCategoryId"
+        label="Categorías"
+        placeholder="Todas las tareas"
+      >
+        <ion-select-option [value]="null">Todas las tareas</ion-select-option>
+        <ion-select-option value="no-category">Sin categoría</ion-select-option>
+        @for (category of categories(); track category.id) {
+          <ion-select-option [value]="category.id">
+            {{ category.name }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

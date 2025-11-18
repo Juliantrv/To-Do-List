@@ -1,0 +1,36 @@
+<ion-card>
+  <ion-card-content>
+    <ion-item lines="none">
+      <ion-input
+        [(ngModel)]="newCategoryName"
+        placeholder="Nombre de la categoría"
+        (keyup.enter)="addCategory()"
+        clear-input="true"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Selector de colores -->
+    <div class="color-picker">
+      <p class="color-label">Color:</p>
+      <div class="color-options">
+        @for (color of availableColors(); track color) {
+          <div 
+            class="color-option" 
+            [style.background-color]="color"
+            [class.selected]="selectedColor() === color"
+            (click)="selectColor(color)"
+          ></div>
+        }
+      </div>
+    </div>
+
+    <ion-button 
+      expand="block" 
+      (click)="addCategory()" 
+      [disabled]="!newCategoryName().trim()"
+    >
+      <ion-icon slot="start" name="add"></ion-icon>
+      Agregar Categoría
+    </ion-button>
+  </ion-card-content>
+</ion-card>
